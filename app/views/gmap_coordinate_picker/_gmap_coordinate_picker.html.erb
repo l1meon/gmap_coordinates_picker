@@ -62,7 +62,7 @@
 
     }
     if (typeof window.google == 'undefined' || typeof google.maps == 'undefined'){
-        $.getScript('<%= "http://maps.googleapis.com/maps/api/js?key=#{api_key}" %>', function(){
+        $.getScript('<%= "https://maps.googleapis.com/maps/api/js?key=#{api_key}" %>', function(){
             afterGmapLoaded()
         });
     }else {
