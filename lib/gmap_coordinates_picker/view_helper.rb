@@ -28,6 +28,7 @@ module GmapCoordinatesPicker #:nodoc
           :map_height => options[:map_height] || GmapCoordinatesPicker.config.map_height,
           :autocomplete => options[:autocomplete] || GmapCoordinatesPicker.config.autocomplete,
           :default_coordinates => default_coordinates.empty? ?  GmapCoordinatesPicker.config.default_coordinates : options[:default_coordinates],
+          :static => options[:static] || GmapCoordinatesPicker.config.static
       }
 
       editable_map_locals = {

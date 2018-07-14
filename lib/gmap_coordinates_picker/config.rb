@@ -23,6 +23,7 @@ module GmapCoordinatesPicker
     config_accessor :map_width
     config_accessor :map_height
     config_accessor :autocomplete
+    config_accessor :static
   end
 
   configure do |config|
@@ -35,5 +36,6 @@ module GmapCoordinatesPicker
     config.map_container_class = 'gmap_coordinate_picker_container'
     config.map_width = '600px'
     config.map_height = '400px'
+    config.static = false
   end
 end
