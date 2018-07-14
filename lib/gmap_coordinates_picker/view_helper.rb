@@ -27,7 +27,7 @@ module GmapCoordinatesPicker #:nodoc
           :map_width => options[:map_width] || GmapCoordinatesPicker.config.map_width,
           :map_height => options[:map_height] || GmapCoordinatesPicker.config.map_height,
           :autocomplete => options[:autocomplete] || GmapCoordinatesPicker.config.autocomplete,
-          :default_coordinates => default_coordinates.empty? ?  GmapCoordinatesPicker.config.default_coordinates : options[:default_coordinates],
+          :default_coordinates => options[:default_coordinates] ||  GmapCoordinatesPicker.config.default_coordinates : options[:default_coordinates],
           :static => options[:static] || GmapCoordinatesPicker.config.static
       }
 
@@ -45,11 +45,11 @@ module GmapCoordinatesPicker #:nodoc
           :lng_field => lat_lng_field(lng_column, lng_column_value, lng_dom_id, options)
       }
 
-      unless options[:static].to_s == 'true'
-         @template ||= self
-         @template.render :partial => '/gmap_coordinate_picker/gmap_coordinate_picker', :locals => default_locals.merge(editable_map_locals)
-      else
+      if options[:static].to_s == 'true'
         render :partial => '/gmap_coordinate_picker/render_map', :locals => default_locals
+      else
+        @template ||= self
+        @template.render :partial => '/gmap_coordinate_picker/gmap_coordinate_picker', :locals => default_locals.merge(editable_map_locals)
       end
     end
 
